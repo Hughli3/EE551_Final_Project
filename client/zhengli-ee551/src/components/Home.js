@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 import serverController from '../serverController';
-
+// import Profile from 'Profile';
 const Home = () => {
     const [loading, setLoading] = useState(true);
     const [photos, setPhotos] = useState({});
@@ -38,10 +38,10 @@ const Home = () => {
         return (
         
             <main>
+                {/* <Profile></Profile> */}
                 <title>Zheng Li</title> 
-
                 <p>Test information</p>
-                <p>{photos.name}</p>
+                {/* <p>{photos.basic.name}</p> */}
             </main>
             
         );

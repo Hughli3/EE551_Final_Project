@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getParsedCommandLineOfConfigFile } from 'typescript';
 
 const baseUrl = "http://localhost:5000"
 
@@ -42,7 +43,26 @@ const serverController = {
             if (e.response && e.response.data && e.response.data.error) throw Object.assign(new Error(e.response.data.error), { code: e.response.status });
             throw e
         }
+    },
+
+    async getProfile() {
+        try{
+            return await axios.get(baseUrl + "/api/profile/");
+        }catch (e) {
+            if (e.response && e.response.data && e.response.data.error) throw Object.assign(new Error(e.response.data.error), { code: e.response.status });
+            throw e
+        }
+    },
+
+    async getExperiences() {
+        try{
+            return await axios.get(baseUrl + "/api/experiences");
+        } catch (e) {
+            if (e.response && e.response.data && e.response.data.error) throw Object.assign(new Error(e.response.data.error), { code: e.response.status });
+            throw e            
+        }
     }
+
 
 };
 
