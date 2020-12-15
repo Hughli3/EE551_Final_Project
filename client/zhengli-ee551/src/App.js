@@ -13,8 +13,8 @@ function App() {
     <Router>
       <Route path='/' component={Header}/>
       <Route exact path='/' component={Home}/>
-      <Route path='/'  component={Profile}/>
-      <Route path='/'  component={Experiences}/>
+      {/* <Route path='/'  component={Profile}/>
+      <Route path='/'  component={Experiences}/> */}
       <Route path='/' component={Footer}/>
     </Router>
   );

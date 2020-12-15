@@ -61,6 +61,24 @@ const serverController = {
             if (e.response && e.response.data && e.response.data.error) throw Object.assign(new Error(e.response.data.error), { code: e.response.status });
             throw e            
         }
+    },
+
+    async getPojects() {
+        try{
+            return await axios.get(baseUrl + "/api/projects");
+        } catch (e) {
+            if (e.response && e.response.data && e.response.data.error) throw Object.assign(new Error(e.response.data.error), { code: e.response.status });
+            throw e            
+        }
+    },
+
+    async getContact() {
+        try{
+            return await axios.get(baseUrl + "/api/contact");
+        } catch (e) {
+            if (e.response && e.response.data && e.response.data.error) throw Object.assign(new Error(e.response.data.error), { code: e.response.status });
+            throw e            
+        }
     }
 
 

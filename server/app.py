@@ -32,7 +32,7 @@ def exprience():
     myExprience = {
         'education':[{'name': "SIT",
                     'major':"CS",
-                    'Description':"I am some description",
+                    'description':"I am some description",
                     "location": "Hoboken, NJ, US",
                     'startTime':'Aug 2019',
                     'endTime': 'Now'},
@@ -44,12 +44,31 @@ def exprience():
                     'endTime': 'June 2017'}],
         'carerrs': [{'name': "China telecom",
                     'title':"Software Engineer",
-                    'Description':"I am some description",
-                    "location": "Beijin, China",
+                    'description':"I am some description",
+                    "location": "Beijing, China",
                     'startTime':'June 2017',
                     'endTime': 'Aug 2018'}]
         }
     return myExprience
+
+@app.route('/api/experiences')
+# exprience data
+def exprience():
+    myProjects = {
+        [{'name': "SIT",
+        'major':"CS",
+        'description':"I am some description",
+        "location": "Hoboken, NJ, US",
+        'startTime':'Aug 2019',
+        'endTime': 'Now'},
+        {'name': "BJUT",
+        'major':"MATH",
+        'Description':"I am some description",
+        "location": "BeiJing, China",
+        'startTime':'Sep 2013',
+        'endTime': 'June 2017'}]
+        }
+    return myProjects
 
 @app.route('/api/contact')
 def contact():

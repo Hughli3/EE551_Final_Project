@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 import serverController from '../serverController';
-// import Profile from 'Profile';
+import Profile from "./Profile"
+import Expriences from "./Experiences"
+import Projects from "./Projects"
+import Contact from "./Contact"
+
 const Home = () => {
     const [loading, setLoading] = useState(true);
     const [photos, setPhotos] = useState({});
@@ -41,7 +45,10 @@ const Home = () => {
                 {/* <Profile></Profile> */}
                 <title>Zheng Li</title> 
                 <p>Test information</p>
-                {/* <p>{photos.basic.name}</p> */}
+                <Profile></Profile>
+                <Expriences></Expriences>
+                <Projects></Projects>
+                <Contact></Contact>
             </main>
             
         );
