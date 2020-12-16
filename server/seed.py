@@ -1,42 +1,29 @@
-from flask import Flask
-from data import home
-import data.profile as profileData 
-import data.experience as experienceData
-import data.contact as contactData
-import data.projects as projectsData
+import pymongo
+import data.home
+import data.profile as profile 
+import data.experience as experience
+import data.contact as contact 
+import data.projects as projects
 
 
-def after_request(resp):
-    resp.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
-    return resp
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+db = client["EE551"]
+# Create cv of zheng li
+def clean():
+    db.profile.remove({})
+    db.experience.remove({})
+    db.contact.remove({})
+    db.projects.remove({})
 
-
-app = Flask(__name__)
-app.after_request(after_request)
-@app.route('/api/')
-# home page data
-def index():
-    test = {"basic": {"name":"zhengli", "age": 25},
-            "education": {"bachlor":"BJUT"}}
-    return test
-
-@app.route('/api/profile/')
-# profile data
-def profile():
-
-    data = profileData.getProfile("Zhengli")
-    # print("got it")
-    myProfile = {
-        "name":data["name"], 
-        "age": data["age"],
-        'description':data["description"]
-    }
-    return myProfile
-
-@app.route('/api/experiences')
-# exprience data
-def exprience():
-    myExprience = {
+def create():
+    # myProfile = {
+    #     "name":"zhengli", 
+    #     "age": 25,
+    #     'description':"Hi! I'm zheng"
+    # }
+    print("------------ Start seed ------------")
+    profile.addProfile("Zhengli", 25, "Hi! I'm zheng")
+    myExperience = {
         'education':[{'name': "SIT",
                     'major':"CS",
                     'description':"I am some description",
@@ -56,10 +43,8 @@ def exprience():
                     'startTime':'June 2017',
                     'endTime': 'Aug 2018'}]
         }
-    return myExprience
 
-@app.route('/api/projects')
-def projects():
+    experience.addExperience("Zhengli", myExperience["education"], myExperience["careers"])
     myProjects = {
         "projects":[{'name': "DogDog",
         'description':"I am some description",
@@ -72,16 +57,16 @@ def projects():
         'endTime': 'June 2017',
          "url":"a url"}]
         }
-    return myProjects
+    projects.addProjects("Zhengli", myProjects["projects"])
 
-@app.route('/api/contact')
-def contact():
     myContact = {
         'LinkedIn': "https://www.linkedin.com/in/zheng-li-875253106/",
         'email':'hughli@live.com'
     }
-    return myContact
+    contact.addContact("Zhengli", myContact)
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    print("------------ Finished seed ------------")
 
+if __name__ == "__main__":
+    clean()
+    create()

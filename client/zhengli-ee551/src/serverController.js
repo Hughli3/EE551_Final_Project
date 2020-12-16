@@ -63,7 +63,7 @@ const serverController = {
         }
     },
 
-    async getPojects() {
+    async getProjects() {
         try{
             return await axios.get(baseUrl + "/api/projects");
         } catch (e) {

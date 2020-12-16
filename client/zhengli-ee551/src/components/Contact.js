@@ -10,7 +10,7 @@ const Contact = () => {
                 try {
                     setLoading(true);
                     const {data:data} = await serverController.getContact();  
-                    console.log(data);
+                    // console.log(data);
                     setContact(data);
                     setLoading(false);
                 } catch (error) {

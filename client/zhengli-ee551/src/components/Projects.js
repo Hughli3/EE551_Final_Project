@@ -24,12 +24,16 @@ const Projects = () => {
         []
     );
 
-    myProject = projects && projects.map( 
+    myProject = projects.projects && projects.projects.map( 
         (project) => {
             return(
-            <div>
-                {project.name}
-            </div>)
+                <div>
+                    <p key={project.name}><i className="fas fa-bath"></i>Compnay: {project.name}</p> 
+                    <p key={project.description}><i className="fas fa-bath"></i>Description: {project.description}</p>
+                    <p key={project.startTime}><i className="fas fa-bath"></i>Start Time: {project.startTime}</p>
+                    <p key={project.endTime}><i className="fas fa-bath"></i>End Time: {project.endTime}</p>
+                    <p key={project.url}><i className="fas fa-bath"></i>Url: {project.url}</p>
+                </div>)
         }
     );
     if (loading) {

@@ -19,7 +19,7 @@ const Home = () => {
                     // const data = await serverController.getTest();
                     // console.log(data);
                     const {data:data} = await serverController.getTest();
-                    console.log(data);
+                    // console.log(data);
                     setPhotos(data);
                     setLoading(false);
                 }catch (e) {

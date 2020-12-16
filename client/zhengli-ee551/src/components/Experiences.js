@@ -12,7 +12,7 @@ const Experiences = () => {
                 try {
                     setLoading(true);
                     const {data:data} = await serverController.getExperiences();  
-                    console.log(data);
+                    // console.log(data);
                     setExperience(data);
                     setLoading(false);
                 } catch (error) {
@@ -29,24 +29,24 @@ const Experiences = () => {
         (ex) => {
             return (<div>
                 
-                <p><i className="fas fa-bath"></i>School: {ex.name}</p> 
-                <p><i className="fas fa-bath"></i>Description: {ex.description}</p> 
-                <p><i className="fas fa-bath"></i>Location: {ex.location}</p> 
-                <p><i className="fas fa-bath"></i>Start Time: {ex.startTime}</p> 
-                <p><i className="fas fa-bath"></i>End Time: {ex.endTime}</p> 
+                <p key={ex.name}><i className="fas fa-bath"></i>School: {ex.name}</p> 
+                <p key={ex.description}><i className="fas fa-bath"></i>Description: {ex.description}</p> 
+                <p key={ex.location}><i className="fas fa-bath"></i>Location: {ex.location}</p> 
+                <p key={ex.startTime}><i className="fas fa-bath"></i>Start Time: {ex.startTime}</p> 
+                <p key={ex.endTime}><i className="fas fa-bath"></i>End Time: {ex.endTime}</p> 
             </div>)
         }
     );
-    myCareer = experience.carerrs && experience.carerrs.map(
+    myCareer = experience.careers && experience.careers.map(
         (career) => {
             return (
             <div>
-                    <p><i className="fas fa-bath"></i>Compnay: {career.name}</p> 
-                    <p><i className="fas fa-bath"></i>Title: {career.title}</p>
-                    <p><i className="fas fa-bath"></i>Description: {career.description}</p>
-                    <p><i className="fas fa-bath"></i>Location: {career.location}</p>
-                    <p><i className="fas fa-bath"></i>Start Time: {career.startTime}</p>
-                    <p><i className="fas fa-bath"></i>End Time: {career.endTime}</p>
+                    <p key={career.name}><i className="fas fa-bath"></i>Compnay: {career.name}</p> 
+                    <p key={career.title}><i className="fas fa-bath"></i>Title: {career.title}</p>
+                    <p key={career.description}><i className="fas fa-bath"></i>Description: {career.description}</p>
+                    <p key={career.location}><i className="fas fa-bath"></i>Location: {career.location}</p>
+                    <p key={career.startTime}><i className="fas fa-bath"></i>Start Time: {career.startTime}</p>
+                    <p key={career.endTime}><i className="fas fa-bath"></i>End Time: {career.endTime}</p>
             </div>)
         }
     );

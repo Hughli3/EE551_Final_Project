@@ -11,7 +11,7 @@ const Profile = () => {
             // const data = await serverController.getTest();
           
             const {data:data} = await serverController.getProfile();
-            console.log(data);
+            // console.log(data);
             setInfo(data);
             setLoading(false);
         }
