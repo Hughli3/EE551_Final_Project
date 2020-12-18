@@ -1,0 +1,52 @@
+#homeDiv {
+    background-size: cover;
+    margin-bottom: "0px"; 
+    /* position: relative;  */
+    z-index: -1;
+  };
+
+  .home {
+    text-align: center;
+    align-items: center;
+  }
+
+  #homeText {
+    position: relative;
+    top: 30%;
+    z-index: 4;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    color:white;
+}
+
+h1 {
+  font-weight: 700 !important;
+  margin-bottom: 10px;
+  font-size: 63px !important;
+  color:white ;
+}
+.line{
+  width:50%;
+  margin-left:auto;
+  margin-right: auto;
+  height: 0.3px;
+}
+/* .title-flex {
+  content: '';
+  flex: 1;
+  align-items: center;
+  height: 0.5px;
+  background: white;
+  width:60%;
+  margin:auto;
+  z-index: 1;
+  } */
+  .container {
+    text-align: center;
+  }
+
+  .backgound-diff{
+    background-color: #F6F6F6;
+    background-size: initial;
+  }

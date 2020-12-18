@@ -12,6 +12,7 @@ const Projects = () => {
                     setLoading(true);
                     const {data:data} = await serverController.getProjects();  
                     console.log(data);
+                  
                     setProjects(data);
                     setLoading(false);
                 } catch (error) {
@@ -27,23 +28,28 @@ const Projects = () => {
     myProject = projects.projects && projects.projects.map( 
         (project) => {
             return(
-                <div>
-                    <p key={project.name}><i className="fas fa-bath"></i>Compnay: {project.name}</p> 
-                    <p key={project.description}><i className="fas fa-bath"></i>Description: {project.description}</p>
-                    <p key={project.startTime}><i className="fas fa-bath"></i>Start Time: {project.startTime}</p>
-                    <p key={project.endTime}><i className="fas fa-bath"></i>End Time: {project.endTime}</p>
-                    <p key={project.url}><i className="fas fa-bath"></i>Url: {project.url}</p>
-                </div>)
+                <div class="row container">
+                <div class="col-md-4" style={{textAlign:"left"}}>
+                    <strong key={project.name}>{project.name}</strong> 
+                    <p key={project.startTime}> {project.startTime} - {project.endTime}</p>   
+                </div>
+                <div class="col-md-8" style={{textAlign:"left"}}>
+                    <pre key={project.description}>{project.description}</pre>
+                    <a key={project.url} href={project.url}><i className="fab fa-github"></i> {project.url}</a>
+                </div>
+            </div>
+            )
         }
     );
     if (loading) {
         return (
-        <div>
+        <div id="project">
             <p>loading</p>
         </div>)
     } else{
-        return(<div>
+        return(<div id="project">
             <h2>Projects</h2>
+            <hr class="line"></hr>
             {myProject}
         </div>)
         

@@ -36,7 +36,7 @@ const serverController = {
         }
     },
 
-    async getTest() {
+    async getHome() {
         try {
             return await axios.get(baseUrl + "/api/");
         } catch (e) {

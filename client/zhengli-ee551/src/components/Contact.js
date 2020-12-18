@@ -25,14 +25,15 @@ const Contact = () => {
 
     if (loading) {
         return (
-        <div>
+        <div id="contact">
             <p>loading</p>
         </div>)
     } else{
-        return(<div>
+        return(<div id="contact row" style={{fontSize:"20pt"}}> 
             <h2>Contact</h2>
-            <p>LinkedIn: {contact.LinkedIn}</p>
-            <p>Email: {contact.email}</p>
+            <hr class="line"></hr>
+            <a href={contact.linkedIn} className="col-md-6"><i className="fab fa-linkedin"></i> LinkedIn</a>
+            <a href={"mailto:" + contact.email} className="col-md-6"><i className="fas fa-envelope"></i>  Email</a>
         </div>)
         
     }

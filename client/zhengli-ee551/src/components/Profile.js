@@ -22,11 +22,25 @@ const Profile = () => {
         return (<p>loading</p>)
     } else{
         return (
-            <div>
+            <div id="profile">
                 <h2>Profile</h2>
-                <p>{info.name}</p>
-                <p>{info.age}</p>
-                <p>{info.description}</p>
+                <p class="lead">I'm a full stack developer</p>
+                <hr class="line"></hr>
+                <div class="row">
+                
+                <div class="col-md-4" style={{textAlign:"left"}}>
+                    <h3>About me</h3>
+                    <p>{info.description}</p>
+                </div>
+                <div class="col-md-4">
+                    <img src={"data:image/png;base64," + info.image} width="246" height="246" className="img rounded-circle" ></img>
+                </div>
+                <div class="col-md-4" style={{textAlign:"left"}}>
+                    <h3>Details</h3>
+                    <strong >Name:</strong><p>{info.name}</p>
+                    <strong>Age:</strong><p>{info.age}</p>
+                </div>
+                </div>
             </div>
         );    
     }

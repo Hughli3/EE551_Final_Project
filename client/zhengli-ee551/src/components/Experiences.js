@@ -12,7 +12,7 @@ const Experiences = () => {
                 try {
                     setLoading(true);
                     const {data:data} = await serverController.getExperiences();  
-                    // console.log(data);
+                    console.log(data);
                     setExperience(data);
                     setLoading(false);
                 } catch (error) {
@@ -27,26 +27,32 @@ const Experiences = () => {
     
     myEducation = experience.education && experience.education.map(
         (ex) => {
-            return (<div>
-                
-                <p key={ex.name}><i className="fas fa-bath"></i>School: {ex.name}</p> 
-                <p key={ex.description}><i className="fas fa-bath"></i>Description: {ex.description}</p> 
-                <p key={ex.location}><i className="fas fa-bath"></i>Location: {ex.location}</p> 
-                <p key={ex.startTime}><i className="fas fa-bath"></i>Start Time: {ex.startTime}</p> 
-                <p key={ex.endTime}><i className="fas fa-bath"></i>End Time: {ex.endTime}</p> 
+            return (<div class="row container" style={{textAlign:"left"}}>
+                <div class="col-md-4" >
+                    <strong key={ex.name} > {ex.name}</strong> 
+                    <p key={ex.startTime}> {ex.startTime} - {ex.endTime}</p>   
+                </div>
+                <div class="col-md-8">
+                    <strong>{ex.degree} - {ex.major}</strong>
+                    <p key={ex.description}>{ex.description}</p> 
+                    <p key={ex.location}><i className="fas fa-map-marker-alt"></i> {ex.location}</p> 
+                </div>
             </div>)
         }
     );
     myCareer = experience.careers && experience.careers.map(
         (career) => {
             return (
-            <div>
-                    <p key={career.name}><i className="fas fa-bath"></i>Compnay: {career.name}</p> 
-                    <p key={career.title}><i className="fas fa-bath"></i>Title: {career.title}</p>
-                    <p key={career.description}><i className="fas fa-bath"></i>Description: {career.description}</p>
-                    <p key={career.location}><i className="fas fa-bath"></i>Location: {career.location}</p>
-                    <p key={career.startTime}><i className="fas fa-bath"></i>Start Time: {career.startTime}</p>
-                    <p key={career.endTime}><i className="fas fa-bath"></i>End Time: {career.endTime}</p>
+            <div class="row container" style={{textAlign:"left"}}>
+                <div class="col-md-4">
+                    <strong key={career.name}> {career.name}</strong> 
+                    <p key={career.startTime}> {career.startTime} - {career.endTime}</p>   
+                </div>
+                <div class="col-md-8">
+                    <strong key={career.title}> {career.title}</strong>
+                    <p key={career.description}> {career.description}</p>
+                    <p key={career.location}><i className="fas fa-map-marker-alt"></i> {career.location}</p>
+                </div>
             </div>)
         }
     );
@@ -55,12 +61,16 @@ const Experiences = () => {
         return (<p>loading</p>);
     } else {
         return (
-            <div>
+            <div id="experiences">
                 <h2>Experiences</h2>
+                <hr class="line"></hr>
+                <div>
                 <h3>Education</h3>
                 {myEducation}
+                <hr class="line"></hr>
                 <h3>Career</h3>
                 {myCareer}
+                </div>
             </div>
         );
     }

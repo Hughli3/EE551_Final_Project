@@ -1,10 +1,13 @@
 from flask import Flask
-from data import home
+import data.home as homeData
 import data.profile as profileData 
 import data.experience as experienceData
 import data.contact as contactData
 import data.projects as projectsData
-
+import base64
+import os
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 def after_request(resp):
     resp.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
@@ -12,73 +15,63 @@ def after_request(resp):
 
 
 app = Flask(__name__)
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["10 per minute"]
+)
 app.after_request(after_request)
 @app.route('/api/')
 # home page data
 def index():
-    test = {"basic": {"name":"zhengli", "age": 25},
-            "education": {"bachlor":"BJUT"}}
-    return test
+    myHome = homeData.getHome("Zheng Li")
+    # os.path.join(file_dir, '%s' % filename)
+    with open(os.getcwd() + myHome["image"], 'rb') as f:
+        img = base64.b64encode(f.read()).decode()
+
+    output = {
+        "name": myHome["name"],
+        "image" :img
+        }
+    # print(output)
+    print("here")
+    return output
 
 @app.route('/api/profile/')
 # profile data
 def profile():
 
-    data = profileData.getProfile("Zhengli")
+    data = profileData.getProfile("Zheng Li")
     # print("got it")
-    myProfile = {
-        "name":data["name"], 
-        "age": data["age"],
-        'description':data["description"]
-    }
-    return myProfile
+    with open(os.getcwd() + data["profile"]["image"], 'rb') as f:
+            img = base64.b64encode(f.read()).decode()
+    data["profile"]["image"] = img
+    return data["profile"]
 
 @app.route('/api/experiences')
 # exprience data
 def exprience():
+    data = experienceData.getExperience("Zheng Li")
     myExprience = {
-        'education':[{'name': "SIT",
-                    'major':"CS",
-                    'description':"I am some description",
-                    "location": "Hoboken, NJ, US",
-                    'startTime':'Aug 2019',
-                    'endTime': 'Now'},
-                    {'name': "BJUT",
-                    'major':"MATH",
-                    'Description':"I am some description",
-                    "location": "BeiJing, China",
-                    'startTime':'Sep 2013',
-                    'endTime': 'June 2017'}],
-        'careers': [{'name': "China telecom",
-                    'title':"Software Engineer",
-                    'description':"I am some description",
-                    "location": "Beijing, China",
-                    'startTime':'June 2017',
-                    'endTime': 'Aug 2018'}]
+        'education':data["education"],
+        'careers': data["careers"]
         }
     return myExprience
 
 @app.route('/api/projects')
 def projects():
+    data = projectsData.getProjects("Zheng Li")
     myProjects = {
-        "projects":[{'name': "DogDog",
-        'description':"I am some description",
-        'startTime':'Aug 2019',
-        'endTime': 'Now',
-        "url":"a url"},
-        {'name': "RentSIT",
-        'Description':"I am some description",
-        'startTime':'Sep 2013',
-        'endTime': 'June 2017',
-         "url":"a url"}]
+        "projects": data["projects"]
         }
     return myProjects
 
 @app.route('/api/contact')
 def contact():
+    data = contactData.getContact("Zheng Li")
     myContact = {
-        'LinkedIn': "https://www.linkedin.com/in/zheng-li-875253106/",
-        'email':'hughli@live.com'
+        'linkedIn': data["linkedIn"],
+        'email':data["email"]
     }
     return myContact
 

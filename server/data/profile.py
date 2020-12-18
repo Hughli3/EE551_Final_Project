@@ -7,19 +7,18 @@ collection = db["profile"]
 # -------------- Checker ------------
 def isExist(name):
     person = collection.find_one({"name":name})
-    print(person)
+    # print(person)
     if (person):
         return True
     else:
         return False
 
 # -------------- add --------------- 
-def addProfile(name, age, description):
+def addProfile(name,profile):
 
     profile = {
         "name": name,
-        "age": age,
-        "description": description
+        "profile":profile
     }
     collection.insert_one(profile)
     output = collection.find_one({"name":name})

@@ -5,12 +5,14 @@ import Profile from "./Profile"
 import Expriences from "./Experiences"
 import Projects from "./Projects"
 import Contact from "./Contact"
+import Footer from "./Footer"
+import "../public/css/Home.css"
+import "../public/css/argon.css"
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
-    const [photos, setPhotos] = useState({});
-    const [person, setPerson] = useState({});
-    
+    const [homeData, setHomeData] = useState({});
+    let image = "data:image/png;base64," + homeData.image;
     useEffect(
         () => {
             async function fetchData() {
@@ -18,13 +20,12 @@ const Home = () => {
                     setLoading(true);
                     // const data = await serverController.getTest();
                     // console.log(data);
-                    const {data:data} = await serverController.getTest();
+                    const {data:data} = await serverController.getHome();
                     // console.log(data);
-                    setPhotos(data);
+                    setHomeData(data);
                     setLoading(false);
                 }catch (e) {
                     // alert.current.error(e.message);
-                    
                     setLoading(false);
                 }
             }
@@ -32,23 +33,61 @@ const Home = () => {
         },
         []
     );
+    let sectionStyle = {
+        width: "100%",
+        // position: "absolute",
+        background:`url(${image}) no-repeat center fixed`,
+        backgroundSize:"cover",
+        marginBottom: "0px",
+        padding: "0px",
+        // minHeight: "100%",
+        height:"100vh"
+      };
+
+    let homeDiv = {
+        position: "relative",
+        top: "30%",
+        zIndex: "4",
+        textAlign: "center",
+        alignItems: "center",
+        alignContent: "center",
+        color:"white"
+    }
+
+    let line = {
+        backgroundColor:"white", 
+        height: "0.3px"
+    }
     if (loading) {
         return (
-            <div>
-                <p>Loading, please wait</p>
+            <div style={homeDiv}>
+                <h1><i className="fas fa-redo"></i>Loading</h1>
             </div>
         );
     }else {
         return (
         
-            <main>
+            <main >
                 {/* <Profile></Profile> */}
-                <title>Zheng Li</title> 
-                <p>Test information</p>
-                <Profile></Profile>
-                <Expriences></Expriences>
+               
+                <div style={sectionStyle}  class="home">
+                    <div id="homeText" style={homeDiv}>                    
+                        <h1 style={{color:"white"}}>{homeData.name}</h1> 
+                        <hr class="line" style={line}></hr>
+                        {/* <div class="title-flex"></div> */}
+                        <h2  style={{color:"white"}}>King, are you glad you are king? </h2>
+                    </div>
+                 </div>
+                 <div class="container">
+                 <div><Profile></Profile></div>
+                
+                 <div class="backgound-diff container" style ={{width: "100%"}}><Expriences></Expriences> </div>
                 <Projects></Projects>
-                <Contact></Contact>
+                <div class="backgound-diff container">
+                    <Contact></Contact>
+                </div>
+                <Footer></Footer>
+                </div>
             </main>
             
         );
