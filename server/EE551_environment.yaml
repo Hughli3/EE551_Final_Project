@@ -4,8 +4,8 @@ channels:
   - anaconda-fusion
   - defaults
 dependencies:
-  - ca-certificates=2020.10.14=0
-  - certifi=2020.11.8=py38hecd8cb5_0
+  - ca-certificates=2020.12.8=hecd8cb5_0
+  - certifi=2020.12.5=py38hecd8cb5_0
   - click=7.1.2=py_0
   - flask=1.1.2=py_0
   - itsdangerous=1.1.0=py_0
@@ -15,10 +15,12 @@ dependencies:
   - libffi=3.3=hb1e8313_2
   - markupsafe=1.1.1=py38h1de35cc_1
   - ncurses=6.2=h0a44026_1
-  - openssl=1.1.1h=haf1e3a3_0
+  - openssl=1.1.1i=h9ed2024_0
   - pip=20.3=py38hecd8cb5_0
+  - pymongo=3.11.2=py38h23ab428_0
   - python=3.8.5=h26836e1_1
   - readline=8.0=h1de35cc_0
+  - redis=5.0.3=h1de35cc_0
   - setuptools=50.3.1=py38hecd8cb5_1
   - sqlite=3.33.0=hffcf06c_0
   - tk=8.6.10=hb0a8c7a_0
@@ -26,5 +28,9 @@ dependencies:
   - wheel=0.35.1=pyhd3eb1b0_0
   - xz=5.2.5=h1de35cc_0
   - zlib=1.2.11=h1de35cc_3
+  - pip:
+    - flask-limiter==1.4
+    - limits==1.5.1
+    - six==1.15.0
 prefix: /Users/hughli/opt/anaconda3/envs/EE551
 

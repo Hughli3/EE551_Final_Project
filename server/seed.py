@@ -46,7 +46,7 @@ def create():
                     'major':"Information and Computing Science (MATH)",
                     "degree":"Bachelor",
                     'description':"At BJUT, I established my CS foundation. As a mathematics student, I am mainly training my logical thinking and problem-solving methods. This has a profound impact on my CS learning path.",
-                    "location": "BeiJing, China",
+                    "location": "Beijing, China",
                     'startTime':'Sep 2013',
                     'endTime': 'June 2017'}],
         'careers': [{'name': "China telecom",

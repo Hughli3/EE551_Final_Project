@@ -75,7 +75,7 @@ const Home = () => {
                         <h1 style={{color:"white"}}>{homeData.name}</h1> 
                         <hr class="line" style={line}></hr>
                         {/* <div class="title-flex"></div> */}
-                        <h2  style={{color:"white"}}>King, are you glad you are king? </h2>
+                        <h2  style={{color:"white"}}> One World One Dream </h2>
                     </div>
                  </div>
                  <div class="container">
