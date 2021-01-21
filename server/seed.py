@@ -28,7 +28,7 @@ def create():
 
     myProfile = {
         'name': "Zheng Li",
-        'age' : 25,
+        'date_of_birth' : "1995/05/29",
         "description": "He is a talented student from Stevens Institute of technology majored in Computer Science. Having a good understanding on both software and hardware, he has great interest in web programming and data mining. He also has experience on data auditing, one of his main work in China Telecom is to data auditing which includes data profiling and improving data quality etc. Familiar with Python, Java, React. ",
         "image":"/image/IMG_5894.jpeg"
     }

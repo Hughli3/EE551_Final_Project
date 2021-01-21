@@ -6,6 +6,7 @@ import data.contact as contactData
 import data.projects as projectsData
 import base64
 import os
+import datetime
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
@@ -45,7 +46,11 @@ def profile():
     # print("got it")
     with open(os.getcwd() + data["profile"]["image"], 'rb') as f:
             img = base64.b64encode(f.read()).decode()
+    date_of_birth = data["profile"]["date_of_birth"]
+    age = datetime.date.today().year - date_of_birth
     data["profile"]["image"] = img
+    data["profile"]["age"] = age
+    del data["profile"]["date_of_birth"]
     return data["profile"]
 
 @app.route('/api/experiences')
