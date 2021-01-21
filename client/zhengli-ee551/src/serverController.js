@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { getParsedCommandLineOfConfigFile } from 'typescript';
 
-const baseUrl = "http://localhost:6000"
+const baseUrl = "http://localhost:5000"
 
 const serverController = {
 

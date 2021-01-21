@@ -9,13 +9,19 @@ import os
 import datetime
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+# from flask_cors import CORS
+# import socket
 
+# hostname = socket.gethostname()
+# ip = socket.gethostbyname(hostname)
+# print(ip)
 def after_request(resp):
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
 
 app = Flask(__name__)
+# ors = CORS(app, resources={r"/.*": {"origins": "http://" + ip +":6000"}}) 
 limiter = Limiter(
     app,
     key_func=get_remote_address,
@@ -26,7 +32,7 @@ app.after_request(after_request)
 # home page data
 def index():
     myHome = homeData.getHome("Zheng Li")
-    # os.path.join(file_dir, '%s' % filename)
+
     with open(os.getcwd() + myHome["image"], 'rb') as f:
         img = base64.b64encode(f.read()).decode()
 
@@ -43,14 +49,14 @@ def index():
 def profile():
 
     data = profileData.getProfile("Zheng Li")
-    # print("got it")
     with open(os.getcwd() + data["profile"]["image"], 'rb') as f:
             img = base64.b64encode(f.read()).decode()
-    date_of_birth = data["profile"]["date_of_birth"]
-    age = datetime.date.today().year - date_of_birth
+    birthday = data["profile"]["date_of_birth"]
+    date_of_birth = datetime.datetime.strptime(birthday, "%Y/%m/%d")
+    age = datetime.date.today().year - date_of_birth.year
     data["profile"]["image"] = img
     data["profile"]["age"] = age
-    del data["profile"]["date_of_birth"]
+    data["profile"].pop("date_of_birth")
     return data["profile"]
 
 @app.route('/api/experiences')
@@ -81,5 +87,5 @@ def contact():
     return myContact
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=6000)
+    app.run(host="0.0.0.0", port=5000)
 
