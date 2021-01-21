@@ -12,7 +12,7 @@ const Experiences = () => {
                 try {
                     setLoading(true);
                     const {data:data} = await serverController.getExperiences();  
-                    console.log(data);
+                    //console.log(data);
                     setExperience(data);
                     setLoading(false);
                 } catch (error) {

@@ -11,7 +11,7 @@ const Projects = () => {
                 try {
                     setLoading(true);
                     const {data:data} = await serverController.getProjects();  
-                    console.log(data);
+                    //console.log(data);
                   
                     setProjects(data);
                     setLoading(false);
