@@ -4,7 +4,7 @@ import Home from './components/Home';
 // import Footer from './components/Footer';
 // import Profile from './components/Profile'
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 // import Experiences from './components/Experiences';
 import "./public/font-awesome/css/all.min.css"
 

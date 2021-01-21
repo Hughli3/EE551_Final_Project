@@ -9,25 +9,25 @@ import os
 import datetime
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-# from flask_cors import CORS
-# import socket
+from flask_cors import CORS
+import socket
 
-# hostname = socket.gethostname()
-# ip = socket.gethostbyname(hostname)
+hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
 # print(ip)
-def after_request(resp):
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    return resp
+# def after_request(resp):
+#     resp.headers['Access-Control-Allow-Origin'] = '*'
+#     return resp
 
 
 app = Flask(__name__)
-# ors = CORS(app, resources={r"/.*": {"origins": "http://" + ip +":6000"}}) 
+ors = CORS(app, resources={r"/.*": {"origins": "*"}}) 
 limiter = Limiter(
     app,
     key_func=get_remote_address,
     default_limits=["10 per minute"]
 )
-app.after_request(after_request)
+# app.after_request(after_request)
 @app.route('/api/')
 # home page data
 def index():
@@ -87,5 +87,5 @@ def contact():
     return myContact
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5001)
 
