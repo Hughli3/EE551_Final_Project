@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { getParsedCommandLineOfConfigFile } from 'typescript';
 
-const baseUrl = "http://localhost:5001"
+const baseUrl = "https://zhengli.dev:5001"
 
 const serverController = {
 
