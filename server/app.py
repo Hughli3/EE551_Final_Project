@@ -15,19 +15,19 @@ import socket
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 # print(ip)
-# def after_request(resp):
-#     resp.headers['Access-Control-Allow-Origin'] = '*'
-#     return resp
+def after_request(resp):
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 app = Flask(__name__)
-ors = CORS(app, resources={r"/.*": {"origins": "*"}}) 
+# ors = CORS(app, resources={r"/.*": {"origins": "*"}}) 
 limiter = Limiter(
     app,
     key_func=get_remote_address,
     default_limits=["10 per minute"]
 )
-# app.after_request(after_request)
+app.after_request(after_request)
 @app.route('/api/')
 # home page data
 def index():
@@ -41,7 +41,7 @@ def index():
         "image" :img
         }
     # print(output)
-    print("here")
+    # print("here")
     return output
 
 @app.route('/api/profile/')
@@ -87,5 +87,5 @@ def contact():
     return myContact
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5001)
-    # app.run(host="0.0.0.0", port=5001,ssl_context=('zhengli_dev.crt', 'zhengli.dev.key'))
+    #app.run(host="0.0.0.0", port=5001)
+    app.run(host="0.0.0.0", port=5001,ssl_context=('zhengli_dev.crt', 'zhengli.dev.key'))

@@ -63,17 +63,17 @@ def create():
         'description':'1. Developed a full-stack web service with Express to help users manage their pet health \n2. Created Express service with RESTful APIs to handle HTTP request and responses Design the whole backend data model, built databases to store user data and dog body data\n3. Architected and implemented the interactive web frontend work flow utilizing AJAX technology (Handlebars)\n4. Implemented basic cookies-based SignUp/login/logout flow and server-side authentication with express session',       
         'startTime':'Sep 2019',
         'endTime': 'Dec 2019',
-        "url":"mydogdog.com"},
+        "url":"http://mydogdog.com"},
         {'name': "RentSIT",
         'description':'1. Built a full-stack web service with Express to helper users post and find for rent\n2. Developed a REACT app for interactive web frontend webpage. Implements features such as, "Create/Edit/Delete post", "Sort housing" and "Watch List" with Argon Design, React Image Light, MongoDB Sorting\n3. Implemented basic token-based SignUp/login/logout flow with React Router and FireBase\n4. Implemented paging with MongoDB and react \n5. Optimized the request process by using Redis to cache the data',
         'startTime':'Feb 2020',
         'endTime': 'May 2020',
-         "url":"myrentsit.com"},
+         "url":"http://myrentsit.com"},
          {'name': "Stock Search",
         'description':'1. Lead team of three in developing a website to search and analyze stock data to help user make investment decision using `lask.\n2. Built a recommendation system and designed interactive graph to better illustrate result with plotly.\n3. Using Ajax technology has reduced page load time by 30%.',
         'startTime':'Feb 2020',
         'endTime': 'May 2020',
-         "url":"myrentsit.com"}]
+         "url":"https://github.com/Hughli3/FE520_FinalProject"}]
         }
     projects.addProjects("Zheng Li", myProjects["projects"])
 
