@@ -54,7 +54,7 @@ def create():
                     'description':"I work as a software engineer in CTSI's big data department. My main job is data auditing and data modeling. At the end of the project, the data compliance rate increased from 43.32% at the beginning of the project to 82.80%. The project built a data warehouse according to the requirements and output 5 data models. Among them, I was responsible for the aggregation and integration of network domain, call voice and call IP data. Output model.",
                     "location": "Beijing, China",
                     'startTime':'June 2017',
-                    'endTime': 'Aug 2018'}]
+                    'endTime': 'Apr 2018'}]
         }
 
     experience.addExperience("Zheng Li", myExperience["education"], myExperience["careers"])
@@ -70,7 +70,7 @@ def create():
         'endTime': 'May 2020',
          "url":"http://myrentsit.com"},
          {'name': "Stock Search",
-        'description':'1. Lead team of three in developing a website to search and analyze stock data to help user make investment decision using `lask.\n2. Built a recommendation system and designed interactive graph to better illustrate result with plotly.\n3. Using Ajax technology has reduced page load time by 30%.',
+        'description':'1. Lead team of three in developing a website to search and analyze stock data to help user make investment decision using flask.\n2. Built a recommendation system and designed interactive graph to better illustrate result with plotly.\n3. Using Ajax technology has reduced page load time by 30%.',
         'startTime':'Feb 2020',
         'endTime': 'May 2020',
          "url":"https://github.com/Hughli3/FE520_FinalProject"}]
